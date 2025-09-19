@@ -1,8 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://5rajqkdx23b7"]
+[gd_scene load_steps=16 format=3 uid="uid://5rajqkdx23b7"]
 
 [ext_resource type="Script" uid="uid://dk1nfx68edcl0" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://bgpqcwkg265sp" path="res://Character/char_blue_1.png" id="1_v0iea"]
-[ext_resource type="Script" uid="uid://bxk0uhol3v66j" path="res://Classes/StateMachine.gd" id="3_6t5aa"]
+[ext_resource type="Script" uid="uid://dux1kbowqad06" path="res://Scripts/States/idleState.gd" id="4_fkybt"]
+[ext_resource type="Script" uid="uid://iaf8g68rlhg0" path="res://fsm/StateMachine.gd" id="4_vgqql"]
+[ext_resource type="Script" uid="uid://dky0iiq5feg7w" path="res://Scripts/States/runningState.gd" id="5_fkybt"]
+[ext_resource type="Script" uid="uid://diao5jxfue42e" path="res://Scripts/States/jumpState.gd" id="6_x3wgy"]
+[ext_resource type="Script" uid="uid://pqxsmxwt3qck" path="res://Scripts/States/fallState.gd" id="7_3smsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
 size = Vector2(11, 28)
@@ -297,5 +301,24 @@ wait_time = 0.1
 one_shot = true
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_6t5aa")
-metadata/_custom_type_script = "uid://bxk0uhol3v66j"
+script = ExtResource("4_vgqql")
+metadata/_custom_type_script = "uid://iaf8g68rlhg0"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_fkybt")
+
+[node name="RunningState" type="Node" parent="StateMachine"]
+script = ExtResource("5_fkybt")
+
+[node name="JumpState" type="Node" parent="StateMachine"]
+script = ExtResource("6_x3wgy")
+
+[node name="FallState" type="Node" parent="StateMachine"]
+script = ExtResource("7_3smsa")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -29.0
+offset_top = -56.0
+offset_right = 11.0
+offset_bottom = -33.0
+text = " "
