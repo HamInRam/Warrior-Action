@@ -58,6 +58,12 @@ func move_common(delta: float) -> void:
 	face_by(input_dir())
 	move_and_slide()
 
+func stand_common(delta: float) -> void:
+	velocity.x = move_toward(velocity.x, 0.0, accel_current() * delta)
+	velocity.y += gravity * delta
+	face_by(input_dir())
+	move_and_slide()
+
 func want_jump() -> bool:
 	return jump_request_timer.time_left > 0.0
 

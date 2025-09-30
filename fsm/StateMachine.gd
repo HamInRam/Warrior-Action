@@ -9,7 +9,7 @@ func _ready() -> void:
 	await owner.ready
 	player = owner
 
-	# ★ 把 machine / player 引用注入到所有 State 子节点，避免它们自己在 _ready 里拿到 null
+	# 把 machine / player 引用注入到所有 State 子节点，避免它们自己在 _ready 里拿到 null
 	for c in get_children():
 		if c is State:
 			c.machine = self
@@ -37,9 +37,8 @@ func change_to(to_state: State) -> void:
 	if player and player.has_node('StateLabel'):
 		player.state_label.text = current.name_id
 
-# 修复 has_node 形参类型：把 StringName 转 NodePath
 func change_to_name(child_name: StringName) -> void:
-	var path := NodePath(child_name)             # ← 关键修复点
+	var path := NodePath(child_name)
 	if has_node(path):
 		var node := get_node(path)
 		if node is State:

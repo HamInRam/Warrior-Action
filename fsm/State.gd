@@ -8,7 +8,7 @@ var name_id: StringName
 func _ready() -> void:
 	machine = get_parent() as StateMachine
 	player  = machine.player
-	name_id = name     
+	name_id = name
 
 func enter(_from: State) -> void: pass
 func exit(_to: State) -> void: pass

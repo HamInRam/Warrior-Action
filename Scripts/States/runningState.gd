@@ -6,8 +6,6 @@ func enter(_from: State) -> void:
 
 func physics(delta: float) -> void:
 	if player.want_jump() and (not player.did_first_jump) and (player.jumps_left > 0) and player.can_first_jump():
-		player.animation_player.play("jump")
-		player.do_first_jump()
 		machine.change_to_name("JumpState")
 		return
 
